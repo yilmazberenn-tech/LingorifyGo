@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Lingorify — İngilizce kelimeler, her gün biraz daha",
+  title: "LingorifyGo — Learn English, one word at a time",
   description:
-    "A1–B2 seviyelerinde İngilizce kelimeler öğren, günlük hedeflerini tamamla ve Ollie ile ilerlemeni takip et.",
+    "Learn English vocabulary with short, level-based practice for A1–B2 learners.",
 };
 
 export default function RootLayout({
@@ -13,7 +13,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="tr">
+    <html lang="tr" data-scroll-behavior="smooth">
       <body>{children}</body>
     </html>
   );

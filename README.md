@@ -1,6 +1,6 @@
 # Lingorify
 
-Lingorify is a responsive English vocabulary-learning dashboard built with Next.js, React, and TypeScript. Learners can explore A1–B2 levels, work through short vocabulary quizzes, and track their daily goals and weekly progress.
+LingorifyGo is a responsive English vocabulary-learning app built with Next.js, React, and TypeScript. The home page introduces the product, `/login` provides the themed sign-in screen, and `/dashboard` contains the A1–B2 vocabulary practice demo. The sign-in form is a frontend demo and is not connected to an authentication service yet.
 
 ## Requirements
 
