@@ -39,7 +39,7 @@ export default function Home() {
     <main className={`landing-page${darkMode ? " landing-dark" : ""}`}>
       <header className="landing-header">
         <Link className="landing-brand" href="/" aria-label="LingorifyGo home">
-          <Image className="brand-octopus" src="/ollie-mark-v2.webp" width={34} height={34} alt="" aria-hidden="true" />
+          <Image className="brand-octopus" src="/octopus.png" width={34} height={34} alt="" aria-hidden="true" />
           <span>Lingorify<span>Go</span></span>
         </Link>
         <nav className="landing-actions" aria-label="Account">

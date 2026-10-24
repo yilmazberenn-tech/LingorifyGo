@@ -64,7 +64,7 @@ function Icon({ name, size = 20 }: { name: string; size?: number }) {
 }
 
 function Octopus() {
-  return <Image className="octopus-svg" src="/ollie-hero-v2.webp" width={480} height={350} priority alt="Ollie isimli mor ahtapot maskot" />;
+  return <Image className="octopus-svg" src="/octopus.png" width={334} height={375} priority alt="LingorifyGo mor ahtapot maskotu" />;
 }
 
 export default function Dashboard({ userName }: { userName: string }) {
@@ -101,8 +101,8 @@ export default function Dashboard({ userName }: { userName: string }) {
     <main className="app-shell">
       <aside className="sidebar">
         <a className="brand" href="#bugun" aria-label="Lingorify ana sayfa">
-          <span className="brand-mark" aria-hidden="true">l</span>
-          <span>lingorify<span className="brand-period">.</span></span>
+          <Image className="brand-octopus" src="/octopus.png" width={34} height={34} alt="" aria-hidden="true" />
+          <span>LingorifyGo</span>
         </a>
 
         <div className="sidebar-label">ÖĞRENME ALANI</div>

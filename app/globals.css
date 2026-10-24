@@ -48,19 +48,6 @@ button:focus-visible, a:focus-visible { outline: 3px solid #b6a3f2; outline-offs
   font-weight: 800;
   letter-spacing: -1.25px;
 }
-.brand-mark {
-  display: grid;
-  width: 34px;
-  height: 34px;
-  place-items: center;
-  border-radius: 12px;
-  background: #9b81e7;
-  color: #fff;
-  font-size: 22px;
-  font-weight: 800;
-  letter-spacing: -2px;
-}
-.brand-period { color: #9073df; }
 .sidebar-label {
   margin: 0 0 12px 12px;
   color: #a49fb2;
