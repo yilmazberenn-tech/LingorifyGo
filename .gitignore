@@ -10,6 +10,7 @@
 # Build output
 /build
 /dist
+/data/
 
 # Local environment files
 .env*

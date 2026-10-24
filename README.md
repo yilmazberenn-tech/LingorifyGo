@@ -1,6 +1,16 @@
 # Lingorify
 
-LingorifyGo is a responsive English vocabulary-learning app built with Next.js, React, and TypeScript. The home page introduces the product, `/login` provides the themed sign-in screen, and `/dashboard` contains the A1–B2 vocabulary practice demo. The sign-in form is a frontend demo and is not connected to an authentication service yet.
+LingorifyGo is a responsive English vocabulary-learning app built with Next.js, React, and TypeScript. Users can create email-and-password accounts on `/login`; user records are stored in Supabase and `/dashboard` requires an authenticated session.
+
+## Supabase accounts
+
+1. Copy `.env.example` to `.env.local`.
+2. Set `SUPABASE_URL` and `SUPABASE_SECRET_KEY` using the server-side values from your Supabase/Vercel project. Never expose the secret key in client code or commit it.
+3. The table definition is in [`supabase/schema.sql`](./supabase/schema.sql). It has already been applied to the Supabase project configured in the current `.env.local`; run it in the SQL Editor when setting up a different project.
+4. Generate a session secret with `node -e "console.log(require('node:crypto').randomBytes(32).toString('base64'))"` and set it as `NEXTAUTH_SECRET` in `.env.local`. Set `NEXTAUTH_URL=http://localhost:3000`, then run `npm run dev`.
+5. Visit `/login` and choose **Create an account**. Signup stores the user’s first and last names, age, normalized email, bcrypt password hash, and creation time in Supabase. The table has Row Level Security enabled with no public policies; the server-only Supabase secret key is used by the signup and login handlers.
+
+Passwords are stored as bcrypt hashes, never as plain text. Configure the same Supabase URL and secret key as server-side environment variables in Vercel before deploying.
 
 ## Requirements
 

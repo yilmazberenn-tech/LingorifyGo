@@ -128,7 +128,6 @@ button:focus-visible, a:focus-visible { outline: 3px solid #b6a3f2; outline-offs
   background: transparent;
   padding: 15px 4px 0;
   text-align: left;
-  cursor: pointer;
 }
 .profile-avatar {
   display: grid;
@@ -145,8 +144,6 @@ button:focus-visible, a:focus-visible { outline: 3px solid #b6a3f2; outline-offs
 .profile-copy { display: grid; gap: 3px; }
 .profile-copy strong { font-size: 11px; }
 .profile-copy small { color: #9b97a7; font-size: 9px; }
-.profile-menu { margin-left: auto; color: #908b9c; font-size: 19px; letter-spacing: 1px; }
-
 .main-area { min-height: 100vh; margin-left: 246px; }
 .topbar {
   position: sticky;
@@ -193,6 +190,8 @@ button:focus-visible, a:focus-visible { outline: 3px solid #b6a3f2; outline-offs
   transition: background .18s ease, color .18s ease;
 }
 .icon-button:hover { background: #f0ecfa; color: var(--purple); }
+.logout-topbar { min-height: 33px; border: 1px solid #eeebf2; border-radius: 9px; background: #fff; padding: 0 10px; color: #777286; font-size: 10px; font-weight: 600; cursor: pointer; transition: background .18s ease, color .18s ease; }
+.logout-topbar:hover { background: #f0ecfa; color: var(--purple); }
 .dashboard-content { width: min(1128px, 100%); margin: 0 auto; padding: 35px 48px 20px; }
 .welcome-row { display: flex; min-height: 115px; align-items: flex-start; justify-content: space-between; gap: 30px; margin-bottom: 27px; }
 .date-label { display: flex; align-items: center; gap: 8px; color: #a19cad; font-size: 9px; font-weight: 700; letter-spacing: 1.2px; }
@@ -434,6 +433,7 @@ h1, h2, h3, p { margin-top: 0; }
   .topbar { height: 57px; padding: 0 17px; }
   .breadcrumb { font-size: 10px; }
   .topbar-right { gap: 6px; }
+  .logout-topbar { min-height: 30px; padding: 0 7px; font-size: 9px; }
   .top-stat { height: 29px; gap: 4px; padding: 0 7px; font-size: 9px; }
   .icon-button { width: 30px; height: 30px; }
   .dashboard-content { padding: 25px 17px 17px; }
@@ -570,10 +570,12 @@ h1, h2, h3, p { margin-top: 0; }
 .login-form input:focus { border-color: #a282ed; box-shadow: 0 0 0 3px #ede5ff; }
 .login-form input::placeholder { color: #b0aabb; }
 .password-label { display: flex; align-items: center; justify-content: space-between; margin-top: 6px; }
-.password-label a, .password-label button, .login-signup a { color: #784bd3; font-size: 9px; font-weight: 700; }
+.password-label a, .password-label button, .login-signup a, .login-signup button { color: #784bd3; font-size: 9px; font-weight: 700; }
 .password-label button { border: 0; background: transparent; padding: 0; cursor: pointer; }
+.login-signup button { border: 0; background: transparent; padding: 0; cursor: pointer; }
 .login-submit { display: flex; height: 43px; align-items: center; justify-content: space-between; margin-top: 8px; border: 0; border-radius: 9px; background: linear-gradient(115deg, #8241f5, #6d31e9); padding: 0 14px; color: #fff; font-size: 11px; font-weight: 700; cursor: pointer; box-shadow: 0 6px 13px #763de82b; transition: transform .18s ease, box-shadow .18s ease; }
 .login-submit:hover { transform: translateY(-1px); box-shadow: 0 9px 17px #763de83a; }
+.login-submit:disabled { cursor: wait; opacity: .75; }
 .login-submit span { font-size: 17px; }
 .login-notice { margin: 12px 0 0; border-radius: 8px; background: #f1ebfb; padding: 9px; color: #6549a5; font-size: 10px; line-height: 1.5; }
 .login-signup { margin: 17px 0 0; color: #8b849c; font-size: 10px; text-align: center; }
