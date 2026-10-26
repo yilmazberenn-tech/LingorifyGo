@@ -28,9 +28,10 @@ export default function LoginForm({ initialNotice }: LoginFormProps) {
     const formData = new FormData(event.currentTarget);
     const email = String(formData.get("email") ?? "");
     const password = String(formData.get("password") ?? "");
+    const isSignup = mode === "signup";
 
     try {
-      if (mode === "signup") {
+      if (isSignup) {
         const response = await fetch("/api/signup", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -43,8 +44,8 @@ export default function LoginForm({ initialNotice }: LoginFormProps) {
           }),
         });
 
+        const result = (await response.json()) as SignupResponse;
         if (!response.ok) {
-          const result = (await response.json()) as SignupResponse;
           setNotice(result.error ?? "Unable to create the account.");
           return;
         }
@@ -59,7 +60,7 @@ export default function LoginForm({ initialNotice }: LoginFormProps) {
 
       if (!result?.ok) {
         const message =
-          mode === "signup"
+          isSignup
             ? "Your account was created, but sign-in failed. Please log in."
             : result?.error === "CredentialsSignin"
               ? "Email or password is incorrect."
@@ -114,6 +115,8 @@ export default function LoginForm({ initialNotice }: LoginFormProps) {
                 autoComplete="given-name"
                 minLength={2}
                 maxLength={80}
+                pattern={String.raw`\p{L}[\p{L}\p{M}]*(?:[ '\u2019-]\p{L}[\p{L}\p{M}]*)*`}
+                title="Use 2–80 letters, spaces, apostrophes, or hyphens."
                 required
               />
               <label htmlFor="surname">Last name</label>
@@ -125,6 +128,8 @@ export default function LoginForm({ initialNotice }: LoginFormProps) {
                 autoComplete="family-name"
                 minLength={2}
                 maxLength={80}
+                pattern={String.raw`\p{L}[\p{L}\p{M}]*(?:[ '\u2019-]\p{L}[\p{L}\p{M}]*)*`}
+                title="Use 2–80 letters, spaces, apostrophes, or hyphens."
                 required
               />
               <label htmlFor="age">Age</label>
@@ -152,10 +157,11 @@ export default function LoginForm({ initialNotice }: LoginFormProps) {
             id="password"
             name="password"
             type="password"
-            placeholder={mode === "signup" ? "At least 8 characters" : "Enter your password"}
+            placeholder={mode === "signup" ? "8+ characters, with a letter and number" : "Enter your password"}
             autoComplete={mode === "signup" ? "new-password" : "current-password"}
             minLength={8}
             maxLength={72}
+            title={mode === "signup" ? "Use at least 8 characters, including a letter and a number." : undefined}
             required
           />
           <button className="login-submit" type="submit" disabled={pending}>

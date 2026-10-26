@@ -80,10 +80,10 @@ export async function createUser(
     .select("id")
     .single();
 
-  if (error?.code === "23505") {
-    return null;
-  }
   if (error) {
+    if (error.code === "23505") {
+      return null;
+    }
     throw new Error(`Failed to create Supabase user: ${error.message}`);
   }
 

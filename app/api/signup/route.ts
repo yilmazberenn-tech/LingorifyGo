@@ -5,6 +5,7 @@ import { createUser } from "@/lib/database";
 export const runtime = "nodejs";
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const namePattern = /^\p{L}[\p{L}\p{M}]*(?:[ '\u2019-]\p{L}[\p{L}\p{M}]*)*$/u;
 
 export async function POST(request: Request) {
   let body: unknown;
@@ -39,20 +40,24 @@ export async function POST(request: Request) {
   if (
     normalizedName.length < 2 ||
     normalizedName.length > 80 ||
+    !namePattern.test(normalizedName) ||
     normalizedSurname.length < 2 ||
     normalizedSurname.length > 80 ||
+    !namePattern.test(normalizedSurname) ||
     !Number.isInteger(parsedAge) ||
     parsedAge < 1 ||
     parsedAge > 120 ||
     normalizedEmail.length > 254 ||
     !emailPattern.test(normalizedEmail) ||
     password.length < 8 ||
+    !/\p{L}/u.test(password) ||
+    !/\d/u.test(password) ||
     Buffer.byteLength(password, "utf8") > 72
   ) {
     return NextResponse.json(
       {
         error:
-          "Use first and last names with 2–80 characters, an age from 1 to 120, a valid email, and a password with 8–72 bytes.",
+          "Use names with 2–80 letters, an age from 1 to 120, a valid email, and a password with at least 8 characters including a letter and a number (maximum 72 bytes).",
       },
       { status: 400 },
     );
